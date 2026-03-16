@@ -86,9 +86,9 @@ export const SocketProvider: React.FC<{ children: ReactNode }> = ({ children }) 
           conv.conversationId === conversationId
             ? {
                 ...conv,
-                lastMessage: {
+              lastMessage: {
                   message: message.message,
-                  sender: message.sender._id,
+                  sender: message.sender.id,
                   senderModel: message.senderModel,
                   createdAt: message.createdAt,
                 },
@@ -98,7 +98,7 @@ export const SocketProvider: React.FC<{ children: ReactNode }> = ({ children }) 
       );
 
       // Show notification if not in active conversation
-      if (activeConversation !== conversationId && message.sender._id !== user?.id) {
+      if (activeConversation !== conversationId && message.sender.id !== user?.id) {
         toast.success(`New message from ${(message.sender as any).firstName}`);
         setUnreadCount((prev) => prev + 1);
       }
@@ -121,7 +121,7 @@ export const SocketProvider: React.FC<{ children: ReactNode }> = ({ children }) 
       setMessages((prev) => ({
         ...prev,
         [data.conversationId]: prev[data.conversationId]?.map((msg) =>
-          msg.sender._id !== data.readBy ? { ...msg, isRead: true, readAt: new Date().toISOString() } : msg
+          msg.sender.id !== data.readBy ? { ...msg, isRead: true, readAt: new Date().toISOString() } : msg
         ),
       }));
     });
