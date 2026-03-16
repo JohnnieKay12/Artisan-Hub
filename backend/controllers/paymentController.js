@@ -122,7 +122,7 @@ const verifyPayment = async (req, res) => {
 
     // Find payment by Paystack reference
     const payment = await Payment.findOne({
-      paystackReference: paymentRef
+      reference: reference
     });
 
     if (!payment) {
@@ -167,7 +167,7 @@ const verifyPayment = async (req, res) => {
         success: true,
         message: 'Payment verified successfully',
         data: {
-          reference: payment.paystackReference,
+          reference: payment.reference,
           amount: payment.amount,
           status: payment.status,
           paidAt: payment.paidAt
