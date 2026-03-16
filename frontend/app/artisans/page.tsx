@@ -54,8 +54,8 @@ export default function ArtisansPage() {
   // Filter states
   const [searchQuery, setSearchQuery] = useState(searchParams.get('search') || '');
   const [selectedCategory, setSelectedCategory] = useState(searchParams.get('category') || 'All');
-  const [minRating, setMinRating] = useState<number | ''>(searchParams.get('minRating') || '');
-  const [maxPrice, setMaxPrice] = useState<number | ''>(searchParams.get('maxPrice') || '');
+  const [minRating, setMinRating] = useState<number | ''>(searchParams.get('minRating') ? Number(searchParams.get('minRating')) : '');
+  const [maxPrice, setMaxPrice] = useState<number | ''>(searchParams.get('maxPrice') ? Number(searchParams.get('maxPrice')) : '');
   const [sortBy, setSortBy] = useState(searchParams.get('sortBy') || 'rating');
 
   const loadArtisans = useCallback(async () => {
