@@ -26,7 +26,6 @@ export default function PaymentSuccess() {
 
         if (data.success) {
           setMessage("Payment verified successfully 🎉");
-          router.push("/dashboard/bookings");
         } else {
           setMessage("Payment verification failed");
         }
