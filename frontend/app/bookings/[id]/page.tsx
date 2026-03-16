@@ -7,7 +7,9 @@ import { formatCurrency, formatDate } from '@/utils/helpers';
 
 export default function BookingDetailsPage() {
   const params = useParams();
-  const id = params.id;
+  const id = params.id as string | string[];
+
+  const bookingId = Array.isArray(id) ? id[0] : id
 
   const [booking, setBooking] = useState<any>(null);
 
@@ -16,7 +18,7 @@ export default function BookingDetailsPage() {
   }, []);
 
   const loadBooking = async () => {
-    const response = await userService.getBooking(id);
+    const response = await userService.getBooking(bookingId);
 
     if (response.success) {
       setBooking(response.data);
