@@ -134,7 +134,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     setUser(updatedUser);
   };
 
-  const userType = user?.role as 'user' | 'artisan' | 'admin' | null;
+  const userType = (user as any)?.role as 'user' | 'artisan' | 'admin' | null;
 
   return (
     <AuthContext.Provider

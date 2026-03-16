@@ -16,6 +16,7 @@ export interface Artisan {
   id: string;
   firstName: string;
   lastName: string;
+  role: 'artisan';
   email: string;
   phone: string;
   profileImage: string;
