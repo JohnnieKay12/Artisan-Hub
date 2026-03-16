@@ -311,7 +311,7 @@ export default function ChatPage() {
                 {/* Messages */}
                 <div className="flex-1 overflow-y-auto p-4 space-y-4">
                   {messages.map((message, index) => {
-                    const isSent = message.sender._id === user?.id;
+                    const isSent = (message.sender as any)._id === user?.id;
                     
                     return (
                       <motion.div
