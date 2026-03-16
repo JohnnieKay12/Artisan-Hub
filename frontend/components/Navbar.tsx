@@ -37,7 +37,6 @@ export const Navbar: React.FC = () => {
       case 'artisan':
         return '/dashboard/artisan';
       case 'admin':
-      case 'superadmin':
         return '/dashboard/admin';
       default:
         return '/';
